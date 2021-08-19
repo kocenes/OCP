@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+  labels:
+    app: myapp
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp
+          image: registry.access.redhat.com/ubi8/ubi:8.0-122
+          command:
+            - "/bin/bash"
+            - "-c"
+            - "while true; do ls /root/buildinfo/; sleep 30; done"
+        - name: yourapp
+          image: registry.redhat.io/rhel7/rhel-tools 
+          command:
+            - "/bin/bash"
+            - "-c"
+            - "while true; do ls /tmp/; sleep 30; done"
