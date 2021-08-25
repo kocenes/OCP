@@ -1,1 +1,1 @@
-[JMX expose](jmxexpose.md)
+[Expose JMX  in Openshift pod](jmxexpose.md)
